@@ -1,0 +1,45 @@
+CREATE TABLE emp(emp_id NUMBER PRIMARY KEY, emp_name VARCHAR2(20), salary NUMBER);
+CREATE TABLE log_tab(msg VARCHAR2(50));
+INSERT INTO emp VALUES(1,'Ravi',20000);
+INSERT INTO emp VALUES(2,'Sita',30000);
+COMMIT;
+
+CREATE OR REPLACE TRIGGER trg_before
+BEFORE INSERT ON emp
+FOR EACH ROW
+BEGIN
+IF :NEW.salary<10000 THEN :NEW.salary:=10000; END IF;
+END;
+/
+
+CREATE OR REPLACE TRIGGER trg_after
+AFTER DELETE ON emp
+FOR EACH ROW
+BEGIN
+INSERT INTO log_tab VALUES('Deleted Emp ID: '||:OLD.emp_id);
+END;
+/
+
+CREATE OR REPLACE TRIGGER trg_stmt
+AFTER UPDATE ON emp
+BEGIN
+INSERT INTO log_tab VALUES('Employee table updated');
+END;
+/
+
+CREATE VIEW emp_view AS SELECT * FROM emp;
+
+CREATE OR REPLACE TRIGGER trg_instead
+INSTEAD OF INSERT ON emp_view
+FOR EACH ROW
+BEGIN
+INSERT INTO emp VALUES(:NEW.emp_id,:NEW.emp_name,:NEW.salary);
+END;
+/
+
+INSERT INTO emp VALUES(3,'Priya',5000);
+UPDATE emp SET salary=salary+1000 WHERE emp_id=1;
+DELETE FROM emp WHERE emp_id=2;
+INSERT INTO emp_view VALUES(4,'Kiran',25000);
+SELECT * FROM emp;
+SELECT * FROM log_tab;
