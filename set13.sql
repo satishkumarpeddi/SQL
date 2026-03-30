@@ -109,3 +109,19 @@ EXCEPTION
         DBMS_OUTPUT.PUT_LINE('Other Error: ' || SQLERRM);
 END;
 /
+SET SERVEROUTPUT ON;
+
+DECLARE
+    v_marks NUMBER := 28;
+BEGIN
+    IF v_marks < 35 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'Student has failed. Marks are below pass mark.');
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('Student has passed.');
+    END IF;
+
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Application Error: ' || SQLERRM);
+END;
+/
