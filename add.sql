@@ -18,9 +18,11 @@
 	accept a prompt 'Enter value for a : '
 	accept a prompt 'Enter value for b : '
 declare
+	v_a number := &a;
+	v_b number := &b;
 	c number := 0;
 begin
-	c := &a+&b;
-	dbms_output.put_line('Sum of two number : '||c);
+	c := v_a+v_b;
+	dbms_output.put_line('Sum of two number : '|| c);
 end;
 /
