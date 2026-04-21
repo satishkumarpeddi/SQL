@@ -22,7 +22,7 @@ select extract(day from sysdate) as day from dual;
 
 select to_date('21-04-2026','DD-MM-YYYY') as coverted_date from dual;
 
-select to_char(sysdate,'DD-MM-YYYY HH24:MI;;SS') as formatted_date from dual;
+select to_char(sysdate,'DD-MM-YYYY HH24:MI:SS') as formatted_date from dual;
 
 select current_date from dual;
 
