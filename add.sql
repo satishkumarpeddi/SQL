@@ -1,9 +1,26 @@
-DECLARE
- a NUMBER := 10;
- b NUMBER := 20; 
- c NUMBER;
-BEGIN
- 	c := a+b;
-    	DBMS_OUTPUT.PUT_LINE('Sum :'||c);
-END;
+-- DECLARE
+--  a NUMBER := 10;
+--  b NUMBER := 20; 
+--  c NUMBER;
+-- BEGIN
+--  	c := a+b;
+--     	DBMS_OUTPUT.PUT_LINE('Sum :'||c);
+-- END;
+-- /
+
+-- ACCEPT num PROMPT 'Enter a number: '
+
+-- BEGIN
+--   DBMS_OUTPUT.PUT_LINE('You entered: ' || &num);
+-- END;
+-- /
+
+	accept a prompt 'Enter value for a : '
+	accept a prompt 'Enter value for b : '
+declare
+	c number := 0;
+begin
+	c := &a+&b;
+	dbms_output.put_line('Sum of two number : '||c);
+end;
 /
