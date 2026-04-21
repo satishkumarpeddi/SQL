@@ -34,16 +34,26 @@
 --sorted functions for addition of two number
 
 
-create or replace function add_method_function(a number,b number) return number is result number;
-begin
- result:=a+b;
- return result; 
-end;
-/
-declare
-    result_value number := 0;
-begin
-    result_value := add_method_function(10,30);
-    dbms_output.put_line('Result value := '||result_value);
-end;
-/
+-- create or replace function add_method_function(a number,b number) return number is result number;
+-- begin
+--  result:=a+b;
+--  return result; 
+-- end;
+-- /
+-- declare
+--     result_value number := 0;
+-- begin
+--     result_value := add_method_function(10,30);
+--     dbms_output.put_line('Result value := '||result_value);
+-- end;
+-- /
+
+--invoking a function
+
+-- create or replace function  square_method(n number) return number is result number;
+-- begin
+--     result := n*n;
+--     return result;
+-- end;
+-- /
+-- select square_method(age) from studentsdemo;
